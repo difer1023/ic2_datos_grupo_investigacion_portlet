@@ -3,11 +3,20 @@
 
 <liferay-portlet-app>
 	<portlet>
-		<portlet-name>ic2-datos-grupo-investigacion</portlet-name>
+		<portlet-name>ic2-resumen-grupo</portlet-name>
 		<icon>/icon.png</icon>
+		<requires-namespaced-parameters>false</requires-namespaced-parameters>
 		<header-portlet-css>/css/main.css</header-portlet-css>
 		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
-		<css-class-wrapper>ic2-datos-grupo-investigacion-portlet</css-class-wrapper>
+		<css-class-wrapper>ic2-resumen-grupo-portlet</css-class-wrapper>
+	</portlet>
+	<portlet>
+		<portlet-name>ic2-detalle-producto</portlet-name>
+		<icon>/icon.png</icon>
+		<requires-namespaced-parameters>false</requires-namespaced-parameters>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
+		<css-class-wrapper>ic2-detalle-producto-portlet</css-class-wrapper>
 	</portlet>
 	<role-mapper>
 		<role-name>administrator</role-name>

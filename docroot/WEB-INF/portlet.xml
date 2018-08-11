@@ -2,21 +2,51 @@
 
 <portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" version="2.0">
 	<portlet>
-		<portlet-name>ic2-datos-grupo-investigacion</portlet-name>
-		<display-name>ic2-datos-grupo-investigacion</display-name>
-		<portlet-class>com.liferay.util.bridges.mvc.MVCPortlet</portlet-class>
+		<portlet-name>ic2-resumen-grupo</portlet-name>
+		<display-name>ic2-resumen-grupo</display-name>
+		<portlet-class>co.com.ic2.datosGrupoInvestigacion.portlet.ResumenGrupoPortlet</portlet-class>
 		<init-param>
 			<name>view-template</name>
-			<value>/view.jsp</value>
+			<value>/html/resumen/view.jsp</value>
 		</init-param>
 		<expiration-cache>0</expiration-cache>
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
 		<portlet-info>
-			<title>ic2-datos-grupo-investigacion</title>
-			<short-title>ic2-datos-grupo-investigacion</short-title>
-			<keywords>ic2-datos-grupo-investigacion</keywords>
+			<title>ic2-resumen-grupo</title>
+			<short-title>ic2-resumen-grupo</short-title>
+			<keywords>ic2-resumen-grupo</keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+	<portlet>
+		<portlet-name>ic2-detalle-producto</portlet-name>
+		<display-name>ic2-detalle-producto</display-name>
+		<portlet-class>co.com.ic2.datosGrupoInvestigacion.portlet.DetalleProductoPortlet</portlet-class>
+		<init-param>
+			<name>view-template</name>
+			<value>/html/detalle/view.jsp</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+		<portlet-info>
+			<title>ic2-detalle-producto</title>
+			<short-title>ic2-detalle-producto</short-title>
+			<keywords>ic2-detalle-producto</keywords>
 		</portlet-info>
 		<security-role-ref>
 			<role-name>administrator</role-name>
