@@ -32,21 +32,51 @@
 		</security-role-ref>
 	</portlet>
 	<portlet>
-		<portlet-name>ic2-detalle-producto</portlet-name>
-		<display-name>ic2-detalle-producto</display-name>
-		<portlet-class>co.com.ic2.datosGrupoInvestigacion.portlet.DetalleProductoPortlet</portlet-class>
+		<portlet-name>ic2-historico-producto</portlet-name>
+		<display-name>ic2-historico-producto</display-name>
+		<portlet-class>co.com.ic2.datosGrupoInvestigacion.portlet.HistoricoProductoPortlet</portlet-class>
 		<init-param>
 			<name>view-template</name>
-			<value>/html/detalle/view.jsp</value>
+			<value>/html/historico/view.jsp</value>
 		</init-param>
 		<expiration-cache>0</expiration-cache>
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
 		<portlet-info>
-			<title>ic2-detalle-producto</title>
-			<short-title>ic2-detalle-producto</short-title>
-			<keywords>ic2-detalle-producto</keywords>
+			<title>ic2-historico-producto</title>
+			<short-title>ic2-historico-producto</short-title>
+			<keywords>ic2-historico-producto</keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+	<portlet>
+		<portlet-name>ic2-metas-grupo</portlet-name>
+		<display-name>ic2-metas-grupo</display-name>
+		<portlet-class>co.com.ic2.datosGrupoInvestigacion.portlet.MetasGrupoPortlet</portlet-class>
+		<init-param>
+			<name>view-template</name>
+			<value>/html/metas/view.jsp</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+		<portlet-info>
+			<title>ic2-metas-grupo</title>
+			<short-title>ic2-metas-grupo</short-title>
+			<keywords>ic2-metas-grupo</keywords>
 		</portlet-info>
 		<security-role-ref>
 			<role-name>administrator</role-name>
