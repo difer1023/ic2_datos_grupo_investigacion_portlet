@@ -11,8 +11,14 @@ import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import co.com.ic2.colciencias.utilidades.properties.ParametrosProperties;
+import co.com.ic2.facade.GrupoInvestigacionFacade;
+
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.model.User;
 import com.liferay.portal.util.PortalUtil;
 
 public class ResumenGrupoPortlet extends GenericPortlet {
@@ -27,7 +33,7 @@ public class ResumenGrupoPortlet extends GenericPortlet {
     	System.out.println("processAction");
 //        super.processAction(actionRequest, actionResponse);
     	
-       	HttpServletRequest request=PortalUtil.getHttpServletRequest(actionRequest);
+//       	HttpServletRequest request=PortalUtil.getHttpServletRequest(actionRequest);
 //    	request.setAttribute("view", "/html/resumen/confirmacion.jsp");
     }
 
@@ -37,6 +43,30 @@ public class ResumenGrupoPortlet extends GenericPortlet {
 
     	HttpServletRequest request=PortalUtil.getHttpServletRequest(renderRequest);
     	String vista=(String)request.getAttribute("view");
+    	
+    	GrupoInvestigacionFacade grupoInvestigacionFacade=new GrupoInvestigacionFacade();
+    	User user = null;
+		try {
+			user = PortalUtil.getUser(renderRequest);
+    	
+			int anoFinVentanaObservacion = Integer
+					.parseInt(ParametrosProperties.getInstance()
+							.getPropiedadesPortal()
+							.getProperty("anoFinVentanaObservacion"));
+			
+			int codigoGrupo=Integer.parseInt((String) user.getExpandoBridge().getAttribute("codigoGrupo"));
+			
+	    	String produccionPorAutor=grupoInvestigacionFacade.consultarProduccionPorAutor(
+	    			codigoGrupo, anoFinVentanaObservacion);
+	    	String produccionPorTipologia=grupoInvestigacionFacade.consultarProduccionPorTipologia(
+	    			codigoGrupo, anoFinVentanaObservacion);
+	    	
+	    	renderRequest.setAttribute("produccionPorAutor", produccionPorAutor);
+	    	renderRequest.setAttribute("produccionPorTipologia", produccionPorTipologia);
+		} catch (PortalException | SystemException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
     	if (vista!=null){
     		include(vista, renderRequest, renderResponse);
