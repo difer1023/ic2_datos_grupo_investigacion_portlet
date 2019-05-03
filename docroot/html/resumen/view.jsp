@@ -5,13 +5,63 @@
 <%
 String produccionPorAutor=(String)request.getAttribute("produccionPorAutor");
 String produccionPorTipologia=(String)request.getAttribute("produccionPorTipologia");
+Integer anoFinVentanaObservacion=(Integer)request.getAttribute("anoFinVentanaObservacion");
+String clasificacionGrupo=(String)request.getAttribute("clasificacionGrupo");
+String clasificacionObjetivo=(String)request.getAttribute("clasificacionObjetivo");
 %>
+<!-- Info boxes -->
+<div class="row">
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-aqua"><i class="fa fa-check-circle-o"></i></span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">Clasificación actual</span>
+        <span class="info-box-number"><%=clasificacionGrupo %></span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <!-- /.col -->
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-red"><i class="fa fa-line-chart"></i></span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">Clasificación objetivo</span>
+        <span class="info-box-number"><%=clasificacionObjetivo %></span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <!-- /.col -->
+
+  <!-- fix for small devices only -->
+  <div class="clearfix visible-sm-block"></div>
+
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-green"><i class="fa fa-calendar-check-o"></i></span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">Fecha limite productos convocatoria</span>
+        <span class="info-box-number">31-12-<%=anoFinVentanaObservacion %></span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <!-- /.col -->
+</div>
+<!-- /.row -->
 
 <div class="container">
-<div id="pie" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-<br>
-<div id="barras"></div>
-<br>
+	<div id="pie" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+	<br>
+	<div id="barras"></div>
+	<br>
 </div>
 <script>
 var produccionPorAutor=JSON.parse('<%=produccionPorAutor %>');
@@ -187,14 +237,14 @@ function dibujarGraficaModal(indice){
 </script>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal bsModal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
         <div id="detalleTipo" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>

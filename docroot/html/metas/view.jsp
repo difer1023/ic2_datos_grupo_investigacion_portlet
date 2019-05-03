@@ -4,7 +4,7 @@ String tiposProductos=(String) request.getAttribute("tiposProductos");
 String productosGrupo=(String) request.getAttribute("productosGrupo");
 String meta=(String) request.getAttribute("meta");
 %>
-
+<%if(meta!=null && !meta.equals("")){ %>
 <div class="col-md-12">
 	<div class="box box-solid">
 		<div class="box-header with-border">
@@ -24,9 +24,9 @@ String meta=(String) request.getAttribute("meta");
 						<div class="progress progress-sm active">
 							<div id="progressBarGNC"
 								class="progress-bar progress-bar-success progress-bar-striped"
-								role="progressbar" aria-valuenow="20" aria-valuemin="0"
-								aria-valuemax="100" style="width: 20%">
-								<span class="sr-only">20% Complete</span>
+								role="progressbar" aria-valuenow="0" aria-valuemin="0"
+								aria-valuemax="100" style="width: 0%">
+								<span class="sr-only">0% Complete</span>
 							</div>
 						</div>
 					</div>
@@ -45,9 +45,9 @@ String meta=(String) request.getAttribute("meta");
 						<div class="progress progress-sm active">
 							<div id="progressBarDTI"
 								class="progress-bar progress-bar-success progress-bar-striped"
-								role="progressbar" aria-valuenow="20" aria-valuemin="0"
-								aria-valuemax="100" style="width: 20%">
-								<span class="sr-only">20% Complete</span>
+								role="progressbar" aria-valuenow="0" aria-valuemin="0"
+								aria-valuemax="100" style="width: 0%">
+								<span class="sr-only">0% Complete</span>
 							</div>
 						</div>
 					</div>
@@ -68,9 +68,9 @@ String meta=(String) request.getAttribute("meta");
 						<div class="progress progress-sm active">
 							<div id="progressBarASC"
 								class="progress-bar progress-bar-success progress-bar-striped"
-								role="progressbar" aria-valuenow="20" aria-valuemin="0"
-								aria-valuemax="100" style="width: 20%">
-								<span class="sr-only">20% Complete</span>
+								role="progressbar" aria-valuenow="0" aria-valuemin="0"
+								aria-valuemax="100" style="width: 0%">
+								<span class="sr-only">0% Complete</span>
 							</div>
 						</div>
 					</div>
@@ -93,7 +93,7 @@ String meta=(String) request.getAttribute("meta");
 								class="progress-bar progress-bar-success progress-bar-striped"
 								role="progressbar" aria-valuenow="20" aria-valuemin="0"
 								aria-valuemax="100" style="width: 20%">
-								<span class="sr-only">20% Complete</span>
+								<span class="sr-only">0% Complete</span>
 							</div>
 						</div>
 					</div>
@@ -203,3 +203,16 @@ $("#progressBarFRH").css('width',((numeroFRH*100)/totalFRH)+'%');
 $("#progressBarASC").css('width',((numeroASC*100)/totalASC)+'%');
 
 </script>
+<%}else{%>
+<div class="col-md-12">
+	<div class="box box-solid">
+		<div class="box-header with-border">
+			<h3 class="box-title">Meta del grupo</h3>
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body">
+			<p>Aún no has definido una meta para tu grupo, defínela en el simulador, o en el módulo de recomendación.</p>
+		</div>
+	</div>
+</div>
+<%}%>

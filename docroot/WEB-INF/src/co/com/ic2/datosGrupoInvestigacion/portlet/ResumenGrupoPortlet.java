@@ -2,15 +2,15 @@ package co.com.ic2.datosGrupoInvestigacion.portlet;
 
 import java.io.IOException;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
 import javax.portlet.GenericPortlet;
 import javax.portlet.PortletException;
 import javax.portlet.PortletRequestDispatcher;
+import javax.portlet.PortletSession;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import co.com.ic2.colciencias.gruplac.ClasificacionGrupo;
 import co.com.ic2.colciencias.utilidades.properties.ParametrosProperties;
 import co.com.ic2.facade.GrupoInvestigacionFacade;
 
@@ -25,16 +25,6 @@ public class ResumenGrupoPortlet extends GenericPortlet {
 
     public void init() {
         viewTemplate = getInitParameter("view-template");
-    }
-
-    public void processAction(
-            ActionRequest actionRequest, ActionResponse actionResponse)
-        throws IOException, PortletException {
-    	System.out.println("processAction");
-//        super.processAction(actionRequest, actionResponse);
-    	
-//       	HttpServletRequest request=PortalUtil.getHttpServletRequest(actionRequest);
-//    	request.setAttribute("view", "/html/resumen/confirmacion.jsp");
     }
 
     public void doView(
@@ -61,8 +51,14 @@ public class ResumenGrupoPortlet extends GenericPortlet {
 	    	String produccionPorTipologia=grupoInvestigacionFacade.consultarProduccionPorTipologia(
 	    			codigoGrupo, anoFinVentanaObservacion);
 	    	
+	    	PortletSession portletSession = renderRequest.getPortletSession();
+	    	ClasificacionGrupo clasificacionGrupo=(ClasificacionGrupo) portletSession.getAttribute("clasificacionGrupoInvestigacion",PortletSession.APPLICATION_SCOPE);
+	    	
 	    	renderRequest.setAttribute("produccionPorAutor", produccionPorAutor);
 	    	renderRequest.setAttribute("produccionPorTipologia", produccionPorTipologia);
+	    	renderRequest.setAttribute("anoFinVentanaObservacion", anoFinVentanaObservacion);
+	    	renderRequest.setAttribute("clasificacionGrupo", clasificacionGrupo.getClasificacionGrupo());
+	    	renderRequest.setAttribute("clasificacionObjetivo", user.getExpandoBridge().getAttribute("clasificacionObjetivo"));
 		} catch (PortalException | SystemException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
