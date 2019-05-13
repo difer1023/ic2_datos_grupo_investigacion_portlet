@@ -60,7 +60,7 @@ String clasificacionObjetivo=(String)request.getAttribute("clasificacionObjetivo
 <div class="container">
 	<div id="pie" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 	<br>
-	<div id="barras"></div>
+	<div id="barras" style="min-width: 310px; max-width: 1058px;"></div>
 	<br>
 </div>
 <script>
@@ -129,8 +129,11 @@ if(produccionPorAutor){
 		chart: {
 	        type: 'column'
 	    },
+	    scrollbar: {
+	        enabled: true
+	    },
 	    title: {
-	        text: 'Producción por autor'
+	        text: 'Autores con mayor producción'
 	    },
 	    xAxis: {
 	        type: 'category'

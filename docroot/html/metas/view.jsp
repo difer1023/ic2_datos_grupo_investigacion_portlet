@@ -92,7 +92,7 @@ String meta=(String) request.getAttribute("meta");
 							<div id="progressBarFRH"
 								class="progress-bar progress-bar-success progress-bar-striped"
 								role="progressbar" aria-valuenow="20" aria-valuemin="0"
-								aria-valuemax="100" style="width: 20%">
+								aria-valuemax="100" style="width: 0%">
 								<span class="sr-only">0% Complete</span>
 							</div>
 						</div>
